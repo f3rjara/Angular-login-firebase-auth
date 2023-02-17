@@ -106,11 +106,23 @@
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
             ]
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
   "cli": {
-    "analytics": "cb49278e-69e7-48f6-aa40-90e8f4f9d6fc"
+    "analytics": "cb49278e-69e7-48f6-aa40-90e8f4f9d6fc",
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }
