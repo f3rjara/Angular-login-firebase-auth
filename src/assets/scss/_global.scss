@@ -1,0 +1,42 @@
+@use './vars' as _vars;
+
+html, body {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background-color: _vars.$brand-ligth;
+  position: relative;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: _vars.$title-font;
+  font-weight: 600;
+}
+
+p, span, a, li, ul, ol {
+  font-family: _vars.$body-font;
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
+  color: _vars.$brand-accent;
+  font-weight: 600;
+  cursor: pointer;
+  &:hover {
+    text-decoration: none;
+    color: _vars.$primary-color;
+  }
+}
+
+.form-control:focus {
+  box-shadow: none;
+}
+
+.btn-check:focus+.btn-primary, .btn-primary:focus,
+.btn-check:active+.btn-primary:focus, .btn-check:checked+.btn-primary:focus, .btn-primary.active:focus, .btn-primary:active:focus, .show>.btn-primary.dropdown-toggle:focus {
+  box-shadow: none;
+}

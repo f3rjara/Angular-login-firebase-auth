@@ -5,4 +5,12 @@ import { Component } from '@angular/core';
   templateUrl: './auth-form.component.html',
   styleUrls: ['./auth-form.component.scss'],
 })
-export class AuthFormComponent {}
+export class AuthFormComponent {
+  public showRegisterForm: boolean = false;
+  constructor() {}
+
+  actionAuth(): boolean {
+    this.showRegisterForm = !this.showRegisterForm;
+    return this.showRegisterForm;
+  }
+}

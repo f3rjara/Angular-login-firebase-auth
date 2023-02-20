@@ -9,6 +9,11 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'recuperar-acceso',
+    component: AuthFormComponent,
+    pathMatch: 'full',
+  },
+  {
     path: '**',
     redirectTo: '',
     pathMatch: 'full',

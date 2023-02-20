@@ -1,1 +1,87 @@
-<p>auth-form works!</p>
+<main class="container-fluid main">
+  <section class="main__section">
+    <div class="row m-0 p-0 h-100">
+      <div class="col col-12 col-lg-6 p-0 h-100 main__form">
+        <img
+          ngSrc="assets/images/iniciar_sistema.webp"
+          width="300"
+          height="300"
+          alt="Iniciar sesion"
+          class="main__form--image my-4 mx-auto mt-5 mb-1 d-block d-lg-none"
+          priority />
+
+        <form
+          class="form row px-2 px-md-0 animate__animated"
+          [ngClass]="{
+            animate__flipInY: !showRegisterForm,
+            animate__flipInX: showRegisterForm
+          }">
+          <h1 class="form__tilte">
+            {{ showRegisterForm ? 'Crear una cuenta' : 'Inciar sesión' }}
+          </h1>
+          <div class="mb-3 p-0">
+            <label for="inputEmail" class="form-label form__label">
+              Correo electrónico
+            </label>
+            <input
+              type="email"
+              class="form-control form__control"
+              id="inputEmail"
+              placeholder="usuario@correo.com" />
+          </div>
+          <div class="mb-3 p-0">
+            <label for="inputPassword" class="form-label form__label">
+              Contraseña
+            </label>
+            <input
+              type="password"
+              class="form-control form__control"
+              id="inputPassword"
+              placeholder="Contraseña" />
+          </div>
+          <div class="mb-3 p-0" *ngIf="showRegisterForm">
+            <label for="inputPasswordMatch" class="form-label form__label">
+              Repetir contraseña
+            </label>
+            <input
+              type="password"
+              class="form-control form__control"
+              id="inputPasswordMatch"
+              placeholder="Repetir contraseña" />
+          </div>
+          <div class="mb-3 text-end" *ngIf="!showRegisterForm">
+            <a
+              [routerLink]="['./recuperar-acceso']"
+              class="form__forgotPassword">
+              Olvidaste la contraseña?
+            </a>
+          </div>
+          <div class="mt-2 p-0 d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary form__submit">
+              {{ showRegisterForm ? 'Registrarse' : 'Inciar sesión' }}
+            </button>
+          </div>
+        </form>
+
+        <div class="my-5 text-center register">
+          <span class="register__label">
+            {{ showRegisterForm ? 'Ya' : 'No' }} tienes un cuenta?
+          </span>
+          <a class="register__action" (click)="actionAuth()">
+            {{ showRegisterForm ? 'Iniciar Sesión' : 'Registrate' }}
+          </a>
+        </div>
+      </div>
+      <div
+        class="col col-12 col-lg-6 d-none d-lg-block p-0 h-100 main__picture">
+        <img
+          ngSrc="assets/images/iniciar_sistema.webp"
+          width="1112"
+          height="691"
+          alt="Iniciar sesion"
+          class="main__picture--image"
+          priority />
+      </div>
+    </div>
+  </section>
+</main>
