@@ -1,18 +1,19 @@
-import { AngularSvgIconModule } from 'angular-svg-icon';
 import { NgModule } from '@angular/core';
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AngularSvgIconModule } from 'angular-svg-icon';
+import { ComponentsModule } from '@components/components.module';
 import { AuhtRoutingModule } from './auht-routing.module';
 import { AuthFormComponent } from './pages/auth-form/auth-form.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AuthFormComponent],
   imports: [
     CommonModule,
-    NgOptimizedImage,
     AuhtRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    ComponentsModule,
     AngularSvgIconModule.forRoot(),
   ],
 })

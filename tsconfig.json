@@ -11,7 +11,7 @@
       "@modules/*": ["src/app/modules/*"],
       "@shared/*": ["src/app/shared/*"],
       "@interfaces/*": ["src/app/shared/interfaces/*"],
-      "@components-g/*": ["src/app/shared/components/*"]
+      "@components/*": ["src/app/shared/components/*"]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
