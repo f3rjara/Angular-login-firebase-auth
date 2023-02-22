@@ -11,6 +11,8 @@
           priority />
 
         <form
+          [formGroup]="authForm"
+          (ngSubmit)="submitAuthForm()"
           class="form row px-2 px-md-0 animate__animated"
           [ngClass]="{
             animate__flipInY: !showRegisterForm,
@@ -19,6 +21,7 @@
           <h1 class="form__tilte">
             {{ showRegisterForm ? 'Crear una cuenta' : 'Inciar sesión' }}
           </h1>
+
           <div class="mb-3 p-0">
             <label for="inputEmail" class="form-label form__label">
               Correo electrónico
@@ -26,28 +29,106 @@
             <input
               type="email"
               class="form-control form__control"
+              [class.is-valid]="authForm.get('email')?.valid"
+              [class.is-invalid]="
+                authForm.get('email')?.invalid && authForm.get('email')?.touched
+              "
               id="inputEmail"
+              formControlName="email"
               placeholder="usuario@correo.com" />
+            <div
+              [class.invalid-feedback]="
+                authForm.get('email')?.invalid && authForm.get('email')?.touched
+              "
+              *ngIf="
+                authForm.get('email')?.invalid && authForm.get('email')?.touched
+              ">
+              Al parecer el correo no es valido.
+            </div>
           </div>
+
           <div class="mb-3 p-0">
             <label for="inputPassword" class="form-label form__label">
               Contraseña
             </label>
-            <input
-              type="password"
-              class="form-control form__control"
-              id="inputPassword"
-              placeholder="Contraseña" />
+            <div class="input-group">
+              <input
+                [type]="showPassword ? 'text' : 'password'"
+                class="form-control form__control"
+                [class.is-valid]="authForm.get('password')?.valid"
+                [class.is-invalid]="
+                  authForm.get('password')?.invalid &&
+                  authForm.get('password')?.touched
+                "
+                id="inputPassword"
+                formControlName="password"
+                placeholder="Contraseña" />
+              <button
+                class="btn btn-outline-secondary py-0 form__action--password"
+                type="button"
+                (click)="showPassword = !showPassword"
+                id="button-addon1">
+                <svg-icon *ngIf="!showPassword" src="assets/icons/show-alt.svg">
+                </svg-icon>
+
+                <svg-icon *ngIf="showPassword" src="assets/icons/hide-alt.svg">
+                </svg-icon>
+              </button>
+              <div
+                [class.invalid-feedback]="
+                  authForm.get('password')?.invalid &&
+                  authForm.get('password')?.touched
+                "
+                *ngIf="
+                  authForm.get('password')?.invalid &&
+                  authForm.get('password')?.touched
+                ">
+                La contraseña debe tener minimo 6 caracteres.
+              </div>
+            </div>
           </div>
           <div class="mb-3 p-0" *ngIf="showRegisterForm">
             <label for="inputPasswordMatch" class="form-label form__label">
               Repetir contraseña
             </label>
-            <input
-              type="password"
-              class="form-control form__control"
-              id="inputPasswordMatch"
-              placeholder="Repetir contraseña" />
+            <div class="input-group">
+              <input
+                [type]="showPassword ? 'text' : 'password'"
+                class="form-control form__control is-valid"
+                [class.is-valid]="authForm.valid"
+                [class.is-invalid]="
+                  (authForm.get('passwordConfirm')?.invalid &&
+                    authForm.get('passwordConfirm')?.touched) ||
+                  authForm.hasError('passwordMatchError')
+                "
+                id="inputPasswordMatch"
+                formControlName="passwordConfirm"
+                placeholder="Repetir contraseña" />
+              <button
+                class="btn btn-outline-secondary py-0 form__action--password"
+                type="button"
+                (click)="showPassword = !showPassword"
+                id="button-addon1">
+                <svg-icon *ngIf="!showPassword" src="assets/icons/show-alt.svg">
+                </svg-icon>
+
+                <svg-icon *ngIf="showPassword" src="assets/icons/hide-alt.svg">
+                </svg-icon>
+              </button>
+              <div
+                [class.invalid-feedback]="
+                  (authForm.get('passwordConfirm')?.invalid &&
+                    authForm.get('passwordConfirm')?.touched) ||
+                  authForm.hasError('passwordMatchError')
+                "
+                *ngIf="
+                  (authForm.get('passwordConfirm')?.invalid &&
+                    authForm.get('passwordConfirm')?.touched) ||
+                  authForm.hasError('passwordMatchError')
+                ">
+                La contraseñas deben coincidir.
+              </div>
+            </div>
           </div>
           <div class="mb-3 text-end" *ngIf="!showRegisterForm">
             <a
@@ -57,7 +138,9 @@
             </a>
           </div>
           <div class="mt-2 p-0 d-flex justify-content-center">
-            <button type="submit" class="btn btn-primary form__submit">
+            <button
+              class="btn btn-primary form__action--submit"
+              [disabled]="authForm.invalid">
               {{ showRegisterForm ? 'Registrarse' : 'Inciar sesión' }}
             </button>
           </div>
