@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { AtomImageComponent } from './atom-image/atom-image.component';
 
 @NgModule({
-  declarations: [],
-  imports: [CommonModule],
+  declarations: [AtomImageComponent],
+  imports: [CommonModule, NgOptimizedImage],
+  exports: [AtomImageComponent],
 })
 export class AtomsModule {}
