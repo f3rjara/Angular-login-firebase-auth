@@ -2,10 +2,16 @@
   <section class="main__section">
     <div class="row m-0 p-0 h-100">
       <div class="col col-12 col-lg-6 p-0 h-100 main__form">
+        <!-- Image iniciar sesión para Movil -->
         <app-atom-image
-          [atomicImageObject]="iniciarSesionImgaeMobile"
+          [atomicImageObject]="iniciarSesionImageMobile"
           class="d-block d-lg-none my-4 mx-auto mt-5 mb-1">
         </app-atom-image>
+        <!-- Formulario de Login o Register -->
+
+        <h1 class="main__tilte">
+          {{ showRegisterForm ? 'Crear una cuenta' : 'Inciar sesión' }}
+        </h1>
 
         <form
           [formGroup]="authForm"
@@ -15,10 +21,6 @@
             animate__flipInY: !showRegisterForm,
             animate__flipInX: showRegisterForm
           }">
-          <h1 class="form__tilte">
-            {{ showRegisterForm ? 'Crear una cuenta' : 'Inciar sesión' }}
-          </h1>
-
           <div class="mb-3 p-0">
             <label for="inputEmail" class="form-label form__label">
               Correo electrónico
@@ -154,7 +156,7 @@
       </div>
       <div
         class="col col-12 col-lg-6 d-none d-lg-block p-0 h-100 main__picture">
-        <app-atom-image [atomicImageObject]="iniciarSesionImgae">
+        <app-atom-image [atomicImageObject]="iniciarSesionImage">
         </app-atom-image>
       </div>
     </div>

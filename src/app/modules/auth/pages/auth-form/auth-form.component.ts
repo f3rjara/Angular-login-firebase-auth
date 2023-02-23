@@ -17,8 +17,8 @@ export class AuthFormComponent {
   showPassword: boolean = false;
   emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   authForm: FormGroup;
-  iniciarSesionImgae: atomicImage = dumy_atomicImage;
-  iniciarSesionImgaeMobile: atomicImage = dumy_atomicImage;
+  iniciarSesionImage: atomicImage = dumy_atomicImage;
+  iniciarSesionImageMobile: atomicImage = dumy_atomicImage;
   constructor(private formBuilder: FormBuilder) {
     this.authForm = this.formBuilder.group({
       email: [
@@ -32,7 +32,7 @@ export class AuthFormComponent {
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
 
-    this.iniciarSesionImgae = {
+    this.iniciarSesionImage = {
       ngSrc: 'assets/images/iniciar_sistema.webp',
       class: 'main__picture--image',
       width: 600,
@@ -41,8 +41,8 @@ export class AuthFormComponent {
       aria: 'Iniciar sesión',
       priority: true,
     };
-    this.iniciarSesionImgaeMobile = {
-      ...this.iniciarSesionImgae,
+    this.iniciarSesionImageMobile = {
+      ...this.iniciarSesionImage,
       class: 'main__form--image',
       width: 300,
       height: 300,
