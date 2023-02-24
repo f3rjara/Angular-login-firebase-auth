@@ -2,16 +2,12 @@
   <section class="main__section">
     <div class="row m-0 p-0 h-100">
       <div class="col col-12 col-lg-6 p-0 h-100 main__form">
-        <!-- Image iniciar sesión para Movil -->
         <app-atom-image
           [atomicImageObject]="iniciarSesionImageMobile"
           class="d-block d-lg-none my-4 mx-auto mt-5 mb-1">
         </app-atom-image>
-        <!-- Formulario de Login o Register -->
 
-        <h1 class="main__tilte">
-          {{ showRegisterForm ? 'Crear una cuenta' : 'Inciar sesión' }}
-        </h1>
+        <app-atom-title [headerTitle]="titlePrimary"></app-atom-title>
 
         <form
           [formGroup]="authForm"

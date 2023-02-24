@@ -9,7 +9,7 @@ export interface atomicImage {
 }
 
 // Initilization object atomicImage
-export const dumy_atomicImage: atomicImage = {
+export const dummyAtomicImage: atomicImage = {
   ngSrc: 'https://picsum.photos/200/300',
   width: 200,
   height: 300,

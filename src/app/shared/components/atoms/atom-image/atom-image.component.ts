@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import {
   atomicImage,
-  dumy_atomicImage,
+  dummyAtomicImage,
 } from '@interfaces/atom-image.interface';
 
 @Component({
@@ -10,6 +10,6 @@ import {
   styleUrls: ['./atom-image.component.scss'],
 })
 export class AtomImageComponent {
-  @Input() atomicImageObject: atomicImage = dumy_atomicImage;
+  @Input() atomicImageObject: atomicImage = dummyAtomicImage;
   constructor() {}
 }

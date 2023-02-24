@@ -1,9 +1,10 @@
+import { HeaderTitle } from './../../../../shared/interfaces/atom-header.interface';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { passwordMatcher } from '@shared/helpers/passwordMatch';
 import {
   atomicImage,
-  dumy_atomicImage,
+  dummyAtomicImage,
 } from '@interfaces/atom-image.interface';
 
 @Component({
@@ -15,10 +16,15 @@ import {
 export class AuthFormComponent {
   showRegisterForm: boolean = false;
   showPassword: boolean = false;
-  emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  emailPattern: RegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  titlePrimary: HeaderTitle = {
+    level: 'h1',
+    value: 'Iniciar sesión',
+    class: 'main__title',
+  };
   authForm: FormGroup;
-  iniciarSesionImage: atomicImage = dumy_atomicImage;
-  iniciarSesionImageMobile: atomicImage = dumy_atomicImage;
+  iniciarSesionImage: atomicImage = dummyAtomicImage;
+  iniciarSesionImageMobile: atomicImage = dummyAtomicImage;
   constructor(private formBuilder: FormBuilder) {
     this.authForm = this.formBuilder.group({
       email: [
@@ -62,10 +68,12 @@ export class AuthFormComponent {
       this.authForm.setValidators([
         passwordMatcher('password', 'passwordConfirm'),
       ]);
+      this.titlePrimary.value = 'Crear cuenta';
     } else {
       this.authForm.clearValidators();
       this.authForm.updateValueAndValidity();
       this.authForm.removeControl('passwordConfirm');
+      this.titlePrimary.value = 'Iniciar sesión';
     }
     this.authForm.reset();
     this.showPassword = false;

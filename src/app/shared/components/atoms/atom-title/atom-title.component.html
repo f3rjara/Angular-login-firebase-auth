@@ -1,0 +1,50 @@
+<container-element [ngSwitch]="headerTitle.level">
+  <h1
+    *ngSwitchCase="'h1'"
+    class="headerTitle__title headerTitle__title--{{ headerTitle.level }}"
+    [ngClass]="headerTitle.class"
+    [id]="headerTitle.id"
+    [attr.aria-label]="headerTitle.value">
+    {{ headerTitle.value }}
+  </h1>
+  <h2
+    *ngSwitchCase="'h2'"
+    class="headerTitle__title headerTitle__title--{{ headerTitle.level }}"
+    [ngClass]="headerTitle.class"
+    [id]="headerTitle.id"
+    [attr.aria-label]="headerTitle.value">
+    {{ headerTitle.value }}
+  </h2>
+  <h3
+    *ngSwitchCase="'h3'"
+    class="headerTitle__title headerTitle__title--{{ headerTitle.level }}"
+    [ngClass]="headerTitle.class"
+    [id]="headerTitle.id ? headerTitle.id : ''"
+    [attr.aria-label]="headerTitle.value">
+    {{ headerTitle.value }}
+  </h3>
+  <h4
+    *ngSwitchCase="'h4'"
+    class="headerTitle__title headerTitle__title--{{ headerTitle.level }}"
+    [ngClass]="headerTitle.class"
+    [id]="headerTitle.id"
+    [attr.aria-label]="headerTitle.value">
+    {{ headerTitle.value }}
+  </h4>
+  <h5
+    *ngSwitchCase="'h5'"
+    class="headerTitle__title headerTitle__title--{{ headerTitle.level }}"
+    [ngClass]="headerTitle.class"
+    [id]="headerTitle.id"
+    [attr.aria-label]="headerTitle.value">
+    {{ headerTitle.value }}
+  </h5>
+  <h6
+    *ngSwitchCase="'h6'"
+    class="headerTitle__title headerTitle__title--{{ headerTitle.level }}"
+    [ngClass]="headerTitle.class"
+    [id]="headerTitle.id"
+    [attr.aria-label]="headerTitle.value">
+    {{ headerTitle.value }}
+  </h6>
+</container-element>

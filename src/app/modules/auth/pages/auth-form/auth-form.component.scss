@@ -8,14 +8,6 @@
   display: flex;
   background-image: _vars.$gradient_texture;
 
-  
-  &__tilte {
-    text-align: center;
-    color: _vars.$black;
-    margin-bottom: 0.8em;
-    font-size: 2em;
-  }
-
   &__section {
     /* border: 2px solid green; */
     width: 75%;
