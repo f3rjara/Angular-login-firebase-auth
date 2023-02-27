@@ -18,15 +18,15 @@ describe('AppComponent', () => {
     component = fixture.componentInstance;
   });
 
-  it(`should create the app`, () => {
+  it(`AppComponent --> should create the app`, () => {
     expect(component).toBeTruthy();
   });
 
-  it(`should have as title 'PRAGMA_angular-basic-system'`, () => {
+  it(`AppComponent --> should have as title 'PRAGMA_angular-basic-system'`, () => {
     expect(component.title).toEqual('PRAGMA_angular-basic-system');
   });
 
-  it(`should render router outlet`, () => {
+  it(`AppComponent --> should render router outlet`, () => {
     const routerOutlet = fixture.nativeElement.querySelector('router-outlet');
     expect(routerOutlet).toBeTruthy();
   });

@@ -24,18 +24,18 @@ describe('AtomTitleComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create AtomTitleComponent', () => {
+  it('AtomTitleComponent --> should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should display the corresponding headerTitle when headerTitleObject is provided', () => {
+  it('AtomTitleComponent --> should display the corresponding headerTitle when headerTitleObject is provided', () => {
     component.headerTitle = dummyAtomTitle;
     fixture.detectChanges();
     const titleElement = fixture.debugElement.query(By.css('h1')).nativeElement;
     expect(titleElement.textContent.trim()).toBe('Atomic Title Component');
   });
 
-  it('should receive headerTitle in @Input', () => {
+  it('AtomTitleComponent --> should receive headerTitle in @Input', () => {
     component.headerTitle = dummyAtomTitle;
     fixture.detectChanges();
     expect(component.headerTitle).toEqual(dummyAtomTitle);

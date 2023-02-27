@@ -21,11 +21,11 @@ describe('AtomImageComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create AtomImageComponent ', () => {
+  it('AtomImageComponent --> should create ', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should display the corresponding atomImage when atomicImageObject is provided', () => {
+  it('AtomImageComponent --> should display the corresponding atomImage when atomicImageObject is provided', () => {
     component.atomicImageObject = {
       ngSrc: 'https://picsum.photos/200/300',
       width: 200,
@@ -40,7 +40,7 @@ describe('AtomImageComponent', () => {
     expect(imgElement.src).toBe('https://picsum.photos/200/300');
   });
 
-  it('should receive atomicImageObject @Input', () => {
+  it('AtomImageComponent --> should receive atomicImageObject @Input', () => {
     const image: atomicImage = {
       ngSrc: 'https://picsum.photos/200/300',
       width: 200,

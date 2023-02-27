@@ -1,0 +1,8 @@
+<button
+  class="btn"
+  [ngClass]="atomButton.class"
+  [disabled]="atomButtonDisbaled"
+  [title]="atomButton.title ? atomButton.title : ''"
+  [attr.aria-label]="atomButton.aria">
+  <ng-content></ng-content>
+</button>

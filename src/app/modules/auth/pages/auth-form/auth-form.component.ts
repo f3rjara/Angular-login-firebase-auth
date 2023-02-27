@@ -6,6 +6,7 @@ import {
   atomicImage,
   dummyAtomicImage,
 } from '@interfaces/atom-image.interface';
+import { atomButton } from '@src/app/shared/interfaces/atom-button.interface';
 
 @Component({
   selector: 'app-auth-form',
@@ -21,6 +22,13 @@ export class AuthFormComponent {
     level: 'h1',
     value: 'Iniciar sesión',
     class: 'main__title',
+  };
+  authActionButton: atomButton = {
+    title: 'Inicia sesión',
+    id: 'auth__btnAction--login',
+    alt: 'Inicia sesión',
+    class: 'btn__action--submit',
+    aria: 'Inicia sesión',
   };
   authForm: FormGroup;
   iniciarSesionImage: atomicImage = dummyAtomicImage;
@@ -82,5 +90,6 @@ export class AuthFormComponent {
 
   submitAuthForm(): void {
     console.log(this.authForm.value);
+    console.log(this.authActionButton);
   }
 }
