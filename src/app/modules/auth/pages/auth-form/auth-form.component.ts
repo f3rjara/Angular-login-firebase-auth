@@ -1,12 +1,12 @@
-import { HeaderTitle } from './../../../../shared/interfaces/atom-header.interface';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { passwordMatcher } from '@shared/helpers/passwordMatch';
+import { HeaderTitle } from '@interfaces/atom-header.interface';
+import { atomButton } from '@interfaces/atom-button.interface';
 import {
   atomicImage,
   dummyAtomicImage,
 } from '@interfaces/atom-image.interface';
-import { atomButton } from '@src/app/shared/interfaces/atom-button.interface';
 
 @Component({
   selector: 'app-auth-form',
