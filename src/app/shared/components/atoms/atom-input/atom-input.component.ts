@@ -7,7 +7,8 @@ import {
   OnDestroy,
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-atom-input',
@@ -27,26 +28,31 @@ export class AtomInputComponent implements OnInit, OnDestroy {
 
   isValidControl: boolean = false;
   isInvalidControl: boolean = false;
-  formSubscription!: Subscription;
+
+  destroy$: Subject<void> = new Subject<void>();
 
   constructor() {}
 
   ngOnInit(): void {
-    if (this.formReference.get(this.controlName)) {
-      this.formSubscription = this.formReference.valueChanges.subscribe(() => {
-        if (this.isPasswordConfirm) {
-          this.isValidControl = this.formReference.valid;
-          this.isInvalidControl =
-            (this.formReference.get(this.controlName)?.invalid &&
-              this.formReference.get(this.controlName)?.touched) ||
-            this.formReference.hasError('passwordMatchError');
-        } else {
-          this.isValidControl = this.formReference.get(this.controlName)!.valid;
-          this.isInvalidControl =
-            this.formReference.get(this.controlName)!.invalid &&
-            this.formReference.get(this.controlName)!.touched;
-        }
-      });
+    if (this.formReference?.get(this.controlName)) {
+      this.formReference.valueChanges
+        .pipe(takeUntil(this.destroy$))
+        .subscribe(() => {
+          if (this.isPasswordConfirm) {
+            this.isValidControl = this.formReference.valid;
+            this.isInvalidControl =
+              (this.formReference.get(this.controlName)?.invalid &&
+                this.formReference.get(this.controlName)?.touched) ||
+              this.formReference.hasError('passwordMatchError');
+          } else {
+            this.isValidControl = this.formReference.get(
+              this.controlName
+            )!.valid;
+            this.isInvalidControl =
+              this.formReference.get(this.controlName)!.invalid &&
+              this.formReference.get(this.controlName)!.touched;
+          }
+        });
     }
   }
 
@@ -56,6 +62,7 @@ export class AtomInputComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.formSubscription.unsubscribe();
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

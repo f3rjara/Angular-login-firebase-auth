@@ -17,7 +17,8 @@ import { atomButton } from '@src/app/shared/interfaces/atom-button.interface';
 export class AuthFormComponent {
   showRegisterForm: boolean = false;
   showPassword: boolean = false;
-  emailPattern: RegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  emailPattern: RegExp = /^^[a-zA-Z0-9._%±]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/;
+  passwordPattern: RegExp = /^^[a-zA-Z0-9]{6,}$/;
   titlePrimary: HeaderTitle = {
     level: 'h1',
     value: 'Iniciar sesión',
@@ -44,7 +45,14 @@ export class AuthFormComponent {
           Validators.pattern(this.emailPattern),
         ],
       ],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(6),
+          Validators.pattern(this.passwordPattern),
+        ],
+      ],
     });
 
     this.iniciarSesionImage = {
