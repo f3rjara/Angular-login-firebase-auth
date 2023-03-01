@@ -33,6 +33,7 @@ export class AuthFormComponent {
   authForm: FormGroup;
   iniciarSesionImage: atomicImage = dummyAtomicImage;
   iniciarSesionImageMobile: atomicImage = dummyAtomicImage;
+
   constructor(private formBuilder: FormBuilder) {
     this.authForm = this.formBuilder.group({
       email: [
@@ -86,6 +87,10 @@ export class AuthFormComponent {
     this.authForm.reset();
     this.showPassword = false;
     return this.showRegisterForm;
+  }
+
+  showPasswordChange(showPassword: boolean): void {
+    this.showPassword = showPassword;
   }
 
   submitAuthForm(): void {

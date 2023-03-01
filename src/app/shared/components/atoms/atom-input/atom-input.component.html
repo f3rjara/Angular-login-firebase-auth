@@ -1,0 +1,30 @@
+<div [formGroup]="formReference">
+  <label [for]="'input__' + controlName" class="form-label form__label">
+    {{ label }}
+  </label>
+  <fieldset class="{{ type === 'password' ? 'input-group' : '' }}">
+    <input
+      class="form-control form__control form__control--{{ controlName }}"
+      [class.is-valid]="isValidControl"
+      [class.is-invalid]="isInvalidControl"
+      [id]="'input__' + controlName"
+      [type]="type === 'password' && showPassword ? 'text' : type"
+      [formControlName]="controlName"
+      [placeholder]="placeholder" />
+
+    <button
+      *ngIf="type === 'password'"
+      class="btn btn-outline-secondary py-0 form__action--password"
+      type="button"
+      (click)="togglePasswordVisibility()"
+      id="button-addon1">
+      <svg-icon
+        src="assets/icons/{{ showPassword ? 'hide-alt.svg' : 'show-alt.svg' }}">
+      </svg-icon>
+    </button>
+
+    <div [class.invalid-feedback]="isInvalidControl" *ngIf="isInvalidControl">
+      {{ errorMessage }}
+    </div>
+  </fieldset>
+</div>
